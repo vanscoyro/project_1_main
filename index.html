@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project1</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body>
+    <header class="mx-auto">
+        <h1 class="text-center"><u>Title Pending</u></h1>
+    </header>
+    <main class="container">
+        <row>
+            <form class="container my-5 px-0 border">
+                <div class="card-header px-3 text-center">Things to do and things to eat</div>
+                
+                <div class="form-group px-3 mt-3">
+                    <label for="searchTerm"> Where to? </label>
+                    <input type="text" class="form-control" id="searchLocation" placeholder="Enter a location" required>
+                </div>
+                <div class="mb-3 mx-3"> <span id="searchBtn" class="pointer"><i class="fas fa-search-location"></i> Search</span>
+                </div>
+
+
+            </form>
+        </row>
+        <row>
+            <div class="card">
+                <div class="card-header">
+                    Results
+                </div>
+                <div id="searchResults" class="card-body">
+                </div>
+            </div>
+        </row>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript.js"></script>
+    <script src="https://kit.fontawesome.com/d81acf0f70.js" crossorigin="anonymous"></script>
+</body>
+</html>
