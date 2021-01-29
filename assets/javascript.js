@@ -27,14 +27,15 @@ $("#submit").click(function(){
 function callGithub(){
   
 
-//   var username = $("#github").val();
-//   settings.url = url+username ; 
-//     $.ajax(settings).done(function (response) {
-//         console.log(response);
-//         $("#github").attr("src",response.avatar_url);
-//         $("body").append(image);
-//       });
-// }
+   var username = $("#github").val();
+   settings.url = url+username ; 
+     $.ajax(settings).done(function (response) {
+         console.log(response);
+         $("#github").attr("src",response.avatar_url);
+         $("body").append(image);
+       });
+ }
+
 $('#form').submit(function(e) {
   e.preventDefault();
   $.ajax({
@@ -50,6 +51,7 @@ $('#form').submit(function(e) {
         $("#github-img").attr("src",response.avatar_url);
       });
 }
+                  
 $('#form').submit(function(e){
   e.preventDefault();
   $.ajax({
