@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // var url = "https://api.github.com/users/";
 // var settings = {
 //     "method": "GET",
@@ -10,7 +10,7 @@
 // $("#submit").click(function(){
 //         callGithub();
 // });
-=======
+
 var url = "https://api.github.com/users/";
 var settings = {
     "method": "GET",
@@ -22,12 +22,11 @@ var settings = {
 $("#submit").click(function(){
         callGithub();
 });
->>>>>>> 2fca031a2926584669bbf77a71d0469a9dfb9833
 
 
-// function callGithub(){
+function callGithub(){
   
-<<<<<<< HEAD
+
 //   var username = $("#github").val();
 //   settings.url = url+username ; 
 //     $.ajax(settings).done(function (response) {
@@ -43,7 +42,7 @@ $('#form').submit(function(e) {
       data: $(this).serialize(),
       type: "POST",
       dataType: "xml",
-=======
+
   var username = $("#github").val();
   settings.url = url+username ; 
     $.ajax(settings).done(function (response) {
@@ -58,7 +57,7 @@ $('#form').submit(function(e){
       data: $(this).serialize(),
       type: "POST",
       dataType: "html",
->>>>>>> 2fca031a2926584669bbf77a71d0469a9dfb9833
+
       success: function(data) {
           console.log('Submission successful');
       },
@@ -66,8 +65,6 @@ $('#form').submit(function(e){
           console.log('Submission failed: ' + error);
       }
   });
-<<<<<<< HEAD
-});
 
 //google sheet API test
 
@@ -141,7 +138,3 @@ $('#form').submit(function(e){
           gapi.auth2.getAuthInstance().signOut();
         }
         
-        
-=======
-});
->>>>>>> 2fca031a2926584669bbf77a71d0469a9dfb9833
