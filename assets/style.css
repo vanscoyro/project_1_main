@@ -1,1 +1,32 @@
-/* nothing here */
+:root {
+    background-color: rgb(33, 98, 114);
+    margin: 200px;
+    padding: 200px;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    background-color: rgb(255, 255, 255);
+    width: 800px;
+    max-width: 80%;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    margin: 50px;
+}
+
+.card {
+    background-color: rgb(184, 174, 174);
+    width: 800px;
+    max-width: 80%;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    margin: 50px;
+}
