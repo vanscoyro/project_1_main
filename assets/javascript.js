@@ -36,22 +36,7 @@ function callGithub(){
        });
  }
 
-$('#form').submit(function(e) {
-  e.preventDefault();
-  $.ajax({
-      url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLScC3qPLfNkJvxhWkrJDsTiaRgpATq9puTLT_5AU0RtvVVywYw/formResponse",
-      data: $(this).serialize(),
-      type: "POST",
-      dataType: "xml",
 
-  var username = $("#github").val();
-  settings.url = url+username ; 
-    $.ajax(settings).done(function (response) {
-        // console.log(response);
-        $("#github-img").attr("src",response.avatar_url);
-      });
-}
-                  
 $('#form').submit(function(e){
   e.preventDefault();
   $.ajax({
@@ -67,6 +52,7 @@ $('#form').submit(function(e){
           console.log('Submission failed: ' + error);
       }
   });
+})
 
 //google sheet API test
 
@@ -139,4 +125,4 @@ $('#form').submit(function(e){
         function handleSignOutClick(event) {
           gapi.auth2.getAuthInstance().signOut();
         }
-        
+ 
