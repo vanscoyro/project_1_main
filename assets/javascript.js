@@ -13,12 +13,15 @@ $("#submit").click(function(){
 });
 
 //google sheets API request call
+var urlSheet = "https://sheets.googleapis.com/v4/spreadsheets/10KzkFG-9gv5m5-PrkunguT3BvJwU8kA01Vi0WOovg_8/values/FormResponse1!A2:Q1000?key="
+var apiKeySheet = "QUl6YVN5RHJqdEFXdzRRZ2JlNWl0WHpWTUZLTGhmYW1ia3M0NEpv"
+
+
 var settings = {
-  "url": "https://sheets.googleapis.com/v4/spreadsheets/10KzkFG-9gv5m5-PrkunguT3BvJwU8kA01Vi0WOovg_8/values/FormResponse1!A2:Q1000?key=AIzaSyDrjtAWw4Qgbe5itXzVMFKLhfambks44Jo",
   "method": "GET",
   "timeout": 0,
 };
-
+settings.url = urlSheet + atob(apiKeySheet)
 $.ajax(settings).done(function (response) {
   console.log(response);
 });
@@ -53,4 +56,5 @@ $('#form').submit(function(e){
       }
   });
 })
+
 
