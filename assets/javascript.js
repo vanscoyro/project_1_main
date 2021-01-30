@@ -31,7 +31,7 @@ function callGithub(){
    settings.url = url+username ; 
      $.ajax(settings).done(function (response) {
          console.log(response);
-         $("#github").attr("src",response.avatar_url);
+         $("#github-img").attr("src",response.avatar_url);
          $("body").append(image);
        });
  }
