@@ -16,7 +16,7 @@ $("#submit").click(function(){
 });
 
 
-//callGithub() function
+//callGithub() function - take in username as an input
 function callGithub(){
   
 
@@ -24,6 +24,8 @@ function callGithub(){
   settings.url = url+username ; 
     $.ajax(settings).done(function (response) {
         console.log(response);
+
+        //select element by name inputted
         $("#github-img").attr("src",response.avatar_url);
       });
 }
@@ -41,8 +43,53 @@ var settings = {
 settings.url = urlSheet + apiKeySheet
 $.ajax(settings).done(function (response) {
   console.log(response);
-});
 
+  var nameContent = response.values[0][1];
+  var locationContent = response.values[0][2]
+  var thingsToDo = response.values[0][3]
+  var funFact = response.values[0][4]
+  var gitHubUsername = response.values[0][5]
+
+  var card = $("<div>").addClass("card").css("width","18rem");
+  var image = $("<img>").attr("id", "github-img-"+gitHubUsername).attr("src","").addClass("card-img-top");
+  var cardBody = $("<div>").addClass("card-body");
+  var cardTitle = $("<h5>").addClass("card-title");
+  var cardText = $("<p>").addClass("card-text");
+  var ul = $("<ul>").addClass("list-group list-group-flush");
+  // var li = $("<li>").addClass("list-group-item");
+  var footer = $("<div>").addClass("card-body");
+  var a = $("<a>").addClass("card-link");
+
+ 
+
+  cardBody.append(cardTitle);
+  cardBody.append(cardText);
+  card.append(image);
+  card.append(cardBody);
+  for (let i = response.values[0].length-1; i > 0; i--) {
+    var li = $("<li>").attr("id","listItem"+i).addClass("list-group-item"+i);
+    console.log(response.values[0][i]);
+    ul.append(li);
+  }
+  card.append(cardBody)
+  card.append(ul)
+  for (let i = 0; i < 2; i++) {
+    var a = $("<a>").addClass("card-link");
+    a.attr('href', "#");
+    footer.append(a)
+  }
+  card.append(footer);
+  $("body").append(card)
+
+  
+  
+  $("#listItem5").append(nameContent);
+  $("#listItem4").append(locationContent);
+  $("#listItem3").append(thingsToDo);
+  $("#listItem2").append(funFact);
+  $("#listItem1").append(gitHubUsername);
+
+});
 
 
 
@@ -64,31 +111,4 @@ $('#form').submit(function(e){
 })
 
 
-function newCard(){
-  var card = $("<div>").addClass("card").css("width","18rem")
-  var image = $("<img>").attr("id", "github-img").attr("src","").addClass("card-img-top");
-  var cardBody = $("<div>").addClass("card-body");
-  var cardTitle = $("<h5>").addClass("card-title");
-  var cardText = $("<p>").addClass("card-text");
-  var ul = $("<ul>").addClass("list-group list-group-flush");
-  var li = $("<li>").addClass("list-group-item")
-  var footer = $("<div>").addClass("card-body");
-  var a = $("<a>").addClass("card-link");
-  cardBody.append(cardTitle);
-  cardBody.append(cardText);
-  card.append(image);
-  card.append(cardBody);
-  for (let i = 0; i < 3; i++) {
-    var li = $("<li>").addClass("list-group-item")
-    ul.append(li)
-  }
-  card.append(cardBody)
-  card.append(ul)
-  for (let i = 0; i < 2; i++) {
-    var a = $("<a>").addClass("card-link");
-    a.attr('href', "#");
-    footer.append(a)
-  }
-  card.append(footer);
-  $("body").append(card)
- }
+
