@@ -1,16 +1,41 @@
+getGoogleSheetData();
 
+function getGoogleSheetData(){
+
+//google sheets API request call
+var urlSheet = "https://sheets.googleapis.com/v4/spreadsheets/10KzkFG-9gv5m5-PrkunguT3BvJwU8kA01Vi0WOovg_8/values/FormResponse1!A2:Q1000?key="
+var apiKeySheet = atob("QUl6YVN5RHJqdEFXdzRRZ2JlNWl0WHpWTUZLTGhmYW1ia3M0NEpv")
+
+
+var settings = {
+  "method": "GET",
+  "timeout": 0,
+};
+settings.url = urlSheet + apiKeySheet
+
+  console.log(settings);
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+    for(var index = 0; index < response.values.length; index ++){
+      loopSheet(response.values[index]);
+    }
+  });
+}
+
+  
 
 //github api call
 var url = "https://api.github.com/users/";
-var githubApiKey = atob("MDk1ZWQyYjMwOThhNmE1N2UxMWI3NTc3ZWE0NjU4YjRhMmE0Nzk0Mg==")
-
-var settings = {
-    "method": "GET",
-    "timeout": 0,
-    "headers": {
-      "Authorization": "Bearer "+ githubApiKey,
-    },
-  };
+  var githubApiKey = "8e50630138dd9404deed7f381153b492ea080763"
+  
+  var settings = {
+      "method": "GET",
+      "timeout": 0,
+      "headers": {
+        "Authorization": "Bearer "+ githubApiKey,
+      },
+    };
+  
 $("#submit").click(function(){
         callGithub2();
 });
@@ -30,42 +55,28 @@ $("#submit").click(function(){
 //       });
 // }
 
-function callGithub2(username){
+function callGithub2(gitHubUsername){
   
-
- 
-  settings.url = url+username ; 
+  settings.url = url+gitHubUsername ; 
     $.ajax(settings).done(function (response) {
         console.log(response);
 
         //select element by name inputted
-        $("#github-img-"+username).attr("src",response.avatar_url);
+        $("#github-img-"+gitHubUsername).attr("src",response.avatar_url);
       });
 }
 
-//google sheets API request call
-var urlSheet = "https://sheets.googleapis.com/v4/spreadsheets/10KzkFG-9gv5m5-PrkunguT3BvJwU8kA01Vi0WOovg_8/values/FormResponse1!A2:Q1000?key="
-var apiKeySheet = atob("QUl6YVN5RHJqdEFXdzRRZ2JlNWl0WHpWTUZLTGhmYW1ia3M0NEpv")
+// //google sheets API request call
+// var urlSheet = "https://sheets.googleapis.com/v4/spreadsheets/10KzkFG-9gv5m5-PrkunguT3BvJwU8kA01Vi0WOovg_8/values/FormResponse1!A2:Q1000?key="
+// var apiKeySheet = atob("QUl6YVN5RHJqdEFXdzRRZ2JlNWl0WHpWTUZLTGhmYW1ia3M0NEpv")
 
 
-var settings = {
-  "method": "GET",
-  "timeout": 0,
-};
-settings.url = urlSheet + apiKeySheet
-getGoogleSheetData();
+// var settings = {
+//   "method": "GET",
+//   "timeout": 0,
+// };
+// settings.url = urlSheet + apiKeySheet
 
-function getGoogleSheetData(){
-  console.log(settings);
-  $.ajax(settings).done(function (response) {
-    console.log(response);
-    for(var index = 0; index < response.values.length; index ++){
-      loopSheet(response.values[index]);
-    }
-  });
-}
-
-  
 
 
 function loopSheet(currentRow){
@@ -74,7 +85,7 @@ function loopSheet(currentRow){
   var thingsToDo = currentRow[3]
   var funFact = currentRow[4]
   var gitHubUsername = currentRow[5]
-
+  
   
   var card = $("<div>").addClass("card col-3").css("width","18rem");
   var image = $("<img>").attr("id", "github-img-"+gitHubUsername).attr("src","").addClass("card-img-top");
@@ -106,12 +117,16 @@ function loopSheet(currentRow){
   liFunFact.append(funFact);
     
   ul.append(liNameContent);
+  ul.append(liLocationContent);
+  ul.append(liThingsToDoContent);
+  ul.append(liFunFact);
   card.append(cardBody)
   card.append(ul)
   card.append(footer);
   $(".cardContainer").append(card)
-
+  
   callGithub2(gitHubUsername);
+  
   
 }
 
