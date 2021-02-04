@@ -9,5 +9,5 @@ That form data is then populated into a Google Spreadsheet and then displayed to
 Here is a sample of the page on load and the animation that plays:
 
 <p align="center">
-  ![animationExample.gif](assets/animationExample.gif?raw=true "sample of animation")
+  <img width="460" height="300" src="assets/animationExample.gif">
 </p>
