@@ -83,16 +83,16 @@ function loopSheet(currentRow){
     
   //these variables append the different form elements that are at different locations of the main object as list items
   var liNameContent = $("<li>").addClass("list-group-item");
-  liNameContent.append(nameContent);
+  liNameContent.append("My name is " + nameContent);
   
   var liLocationContent = $("<li>").addClass("list-group-item");
-  liLocationContent.append(locationContent);
+  liLocationContent.append("I live in " + locationContent);
 
   var liThingsToDoContent = $("<li>").addClass("list-group-item");
-  liThingsToDoContent.append(thingsToDo);
+  liThingsToDoContent.append("I like to " + thingsToDo);
 
   var liFunFact = $("<li>").addClass("list-group-item");
-  liFunFact.append(funFact);
+  liFunFact.append("Fun fact : " + funFact);
   
   //this appends the different li objects to the unordered list variable
   ul.append(liNameContent);
