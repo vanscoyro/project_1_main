@@ -8,4 +8,4 @@ That form data is then populated into a Google Spreadsheet and then displayed to
 
 Here is a sample of the page on load and the animation that plays:
 
-![animationExample.GIF](assets/animationExample.GIF?raw=true "sample of animation")
+![animationExample.gif](assets/animationExample.gif?raw=true "sample of animation")
