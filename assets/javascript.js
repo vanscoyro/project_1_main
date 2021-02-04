@@ -105,16 +105,16 @@ function loopSheet(currentRow){
   card.append(cardBody);
   
   var liNameContent = $("<li>").addClass("list-group-item");
-  liNameContent.append(nameContent);
+  liNameContent.append("My name is " + nameContent);
   
   var liLocationContent = $("<li>").addClass("list-group-item");
-  liLocationContent.append(locationContent);
+  liLocationContent.append("I live in " + locationContent);
 
   var liThingsToDoContent = $("<li>").addClass("list-group-item");
-  liThingsToDoContent.append(thingsToDo);
+  liThingsToDoContent.append("I like to " + thingsToDo);
 
   var liFunFact = $("<li>").addClass("list-group-item");
-  liFunFact.append(funFact);
+  liFunFact.append("A fun fact about me is " + funFact);
     
   ul.append(liNameContent);
   ul.append(liLocationContent);
