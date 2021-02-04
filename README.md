@@ -6,13 +6,13 @@ This program allows a user to answer a list of questions and when submitted, com
 
 That form data is then populated into a Google Spreadsheet and then displayed to the end-user as a Bootstrap card element. 
 
-Here is a sample of the page on load and the animation that plays:
+* Here is a sample of the page on load and the animation that plays:
 
 <p align="center">
   <img width="460" height="300" src="assets/animationExample.gif">
 </p>
 
-Here is a sample of the page once the google sheet API populates the card elements:
+* Here is a sample of the page once the google sheet API populates the card elements:
 
 <p align="center">
   <img width="460" height="460" src="assets/cardExample.JPG">
