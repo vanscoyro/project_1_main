@@ -32,7 +32,7 @@ settings.url = urlSheet + apiKeySheet
 
 //github api call
 var url = "https://api.github.com/users/";
-  var githubApiKey = "a58f754c63aa0bb328b80a7f80fe7dd9c8352c04"
+  var githubApiKey = "5821fc07a9516ce22f3436efaf45446d38705f96"
   
   var settings = {
       "method": "GET",
@@ -152,6 +152,7 @@ $('#form').submit(function(e){
           console.log('Submission successful');
           $(".cardContainer").empty();
           getGoogleSheetData();
+          $(".cardContainer").removeClass("d-none");
       },
       error: function(xhr, status, error) {
           console.log('Submission failed: ' + error);
