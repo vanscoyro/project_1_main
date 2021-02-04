@@ -15,7 +15,7 @@ Here is a sample of the page on load and the animation that plays:
 Here is a sample of the page once the google sheet API populates the card elements:
 
 <p align="center">
-  <img width="460" height="300" src="assets/cardExample.JPG">
+  <img width="460" height="460" src="assets/cardExample.JPG">
 </p>
 ## User Story
 
