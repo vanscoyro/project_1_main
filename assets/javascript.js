@@ -26,7 +26,7 @@ settings.url = urlSheet + apiKeySheet
 
 //github api call
 var url = "https://api.github.com/users/";
-  var githubApiKey = "57978b0def97bf70e6db40951ab459a25356ead5"
+  var githubApiKey = "bf0782e1c11bb5380e4b1c415bfc1c95e808f761"
   
   var settings = {
       "method": "GET",
