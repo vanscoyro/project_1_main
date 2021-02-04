@@ -1,3 +1,5 @@
+//initial google sheet api function call to display the content held in the associated google sheet
+
 getGoogleSheetData();
 
 function getGoogleSheetData(){
@@ -16,17 +18,17 @@ settings.url = urlSheet + apiKeySheet
   console.log(settings);
   $.ajax(settings).done(function (response) {
     console.log(response);
+    //this for() loop runs the function loopSheet() however many times there are items in the google sheet api call's object array
     for(var index = 0; index < response.values.length; index ++){
       loopSheet(response.values[index]);
     }
   });
 }
 
-  
 
 //github api call
 var url = "https://api.github.com/users/";
-  var githubApiKey = "bf0782e1c11bb5380e4b1c415bfc1c95e808f761"
+  var githubApiKey = atob("M2IzY2Y0NzE3Mzk4ZWQ5OGFjMzYzYzc3NDI2NDc3ZDlkZTI5YWMyNg==")
   
   var settings = {
       "method": "GET",
@@ -41,20 +43,7 @@ $("#submit").click(function(){
 });
 
 
-//callGithub() function - take in username as an input
-// function callGithub(){
-  
-
-//   var username = $("#github").val();
-//   settings.url = url+username ; 
-//     $.ajax(settings).done(function (response) {
-//         console.log(response);
-
-//         //select element by name inputted
-//         $("#github-img").attr("src",response.avatar_url);
-//       });
-// }
-
+//this function calls the gitHub api and passes the gitHubUsername variable as a parameter 
 function callGithub2(gitHubUsername){
   
   settings.url = url+gitHubUsername ; 
@@ -66,19 +55,7 @@ function callGithub2(gitHubUsername){
       });
 }
 
-// //google sheets API request call
-// var urlSheet = "https://sheets.googleapis.com/v4/spreadsheets/10KzkFG-9gv5m5-PrkunguT3BvJwU8kA01Vi0WOovg_8/values/FormResponse1!A2:Q1000?key="
-// var apiKeySheet = atob("QUl6YVN5RHJqdEFXdzRRZ2JlNWl0WHpWTUZLTGhmYW1ia3M0NEpv")
-
-
-// var settings = {
-//   "method": "GET",
-//   "timeout": 0,
-// };
-// settings.url = urlSheet + apiKeySheet
-
-
-
+//this function builds the cards that will hold the content of the (currentRow) of the data object retrieved from the googleSheet API
 function loopSheet(currentRow){
   var nameContent = currentRow[1];
   var locationContent = currentRow[2]
@@ -98,12 +75,13 @@ function loopSheet(currentRow){
   
 
  
-
+  //this appends the different elements to the cardBody variable
   cardBody.append(cardTitle);
   cardBody.append(cardText);
   card.append(image);
   card.append(cardBody);
-  
+    
+  //these variables append the different form elements that are at different locations of the main object as list items
   var liNameContent = $("<li>").addClass("list-group-item");
   liNameContent.append(nameContent);
   
@@ -115,7 +93,8 @@ function loopSheet(currentRow){
 
   var liFunFact = $("<li>").addClass("list-group-item");
   liFunFact.append(funFact);
-    
+  
+  //this appends the different li objects to the unordered list variable
   ul.append(liNameContent);
   ul.append(liLocationContent);
   ul.append(liThingsToDoContent);
@@ -125,13 +104,14 @@ function loopSheet(currentRow){
   card.append(footer);
   $(".cardContainer").append(card)
   
+  //this calls the callGitHub function for gitHubUsername to populate the card with the image of the user's profile picture
   callGithub2(gitHubUsername);
   
   
 }
 
 
-
+//this is the full form submission that sends the data to the googleSheet without forcing the user to leave the site and view the standard googleForm submission landing page
 $('#form').submit(function(e){
   e.preventDefault();
   $.ajax({
@@ -142,7 +122,9 @@ $('#form').submit(function(e){
 
       success: function(data) {
           console.log('Submission successful');
+          //this empties the card container so that duplicate data is not appended upon submission
           $(".cardContainer").empty();
+          //upon sumbission recall the updated data pushed to the google sheet
           getGoogleSheetData();
       },
       error: function(xhr, status, error) {
