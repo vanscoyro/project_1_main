@@ -1,6 +1,6 @@
-Project #1 for Web Development Bootcamp
+## Project #1 for Web Development Bootcamp
 
-Class Roster Generator
+## Class Roster Generator
 
 This program allows a user to answer a list of questions and when submitted, complete a google form. 
 
