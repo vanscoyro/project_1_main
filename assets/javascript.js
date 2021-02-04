@@ -1,4 +1,6 @@
+
 getGoogleSheetData();
+//hides loaded cards 
 
 function getGoogleSheetData(){
 
@@ -17,16 +19,20 @@ settings.url = urlSheet + apiKeySheet
   $.ajax(settings).done(function (response) {
     console.log(response);
     for(var index = 0; index < response.values.length; index ++){
+      
       loopSheet(response.values[index]);
+      $(".cardContainer").addClass("d-none")
+
     }
+
   });
 }
 
-  
+
 
 //github api call
 var url = "https://api.github.com/users/";
-  var githubApiKey = "8e50630138dd9404deed7f381153b492ea080763"
+  var githubApiKey = "a58f754c63aa0bb328b80a7f80fe7dd9c8352c04"
   
   var settings = {
       "method": "GET",
@@ -96,7 +102,7 @@ function loopSheet(currentRow){
   // var li = $("<li>").addClass("list-group-item");
   var footer = $("<div>").addClass("card-body");
   
-
+  $(".cardContainer").append(card).addClass(".d-none");
  
 
   cardBody.append(cardTitle);
@@ -123,7 +129,7 @@ function loopSheet(currentRow){
   card.append(cardBody)
   card.append(ul)
   card.append(footer);
-  $(".cardContainer").append(card)
+  
   
   callGithub2(gitHubUsername);
   
@@ -134,6 +140,8 @@ function loopSheet(currentRow){
 
 $('#form').submit(function(e){
   e.preventDefault();
+  $(".container").addClass("d-none");
+  $(".cardContainer").removeClass("d-none");
   $.ajax({
       url: "https://cors-anywhere.herokuapp.com/https://docs.google.com/forms/u/0/d/e/1FAIpQLScC3qPLfNkJvxhWkrJDsTiaRgpATq9puTLT_5AU0RtvVVywYw/formResponse",
       data: $(this).serialize(),
@@ -149,6 +157,7 @@ $('#form').submit(function(e){
           console.log('Submission failed: ' + error);
       }
   });
+  
 })
 
 
